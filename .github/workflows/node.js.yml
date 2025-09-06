@@ -18,7 +18,7 @@ jobs:
           npm run build
   test:
     runs-on: ubuntu-latest
-    
+    needs: build
     env:
       NODE_OPTIONS: --openssl-legacy-provider    
     strategy:
@@ -26,6 +26,11 @@ jobs:
         node-version: [18.x, 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@master
+      with:
+        name: webpack artifacts
+        path: public
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
