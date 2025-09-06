@@ -16,9 +16,12 @@ jobs:
         run: |
           npm install
           npm run build
+      - uses: actions/upload-artifact@master
+        with:
+          name: webpack artifacts
+          path: public/
   test:
     runs-on: ubuntu-latest
-    
     env:
       NODE_OPTIONS: --openssl-legacy-provider    
     strategy:
