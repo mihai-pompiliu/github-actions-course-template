@@ -4,6 +4,7 @@ on: pull_request_review
 jobs:
   labelWhenApproved:
    runs-on: ubuntu-latest
+   
    step:
      - name: label-approved-action
        uses: AnandChowdhary/label-approved-action@v1.0.0
